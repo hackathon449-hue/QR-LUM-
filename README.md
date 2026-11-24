@@ -75,7 +75,7 @@ npm install -g firebase-tools
 firebase login
 
 # Associate this directory with your Firebase project
-firebase use <your-project-id>
+firebase use <firebase use qr-lab-40fb2>
 ```
 
 ### Deploy
