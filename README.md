@@ -2,6 +2,8 @@
 
 > An interactive educational experience exploring the hidden technology behind every QR code.
 
+🔗 **Live demo:** https://qr-lab-40fb2.web.app
+
 ![QR LAB](https://img.shields.io/badge/QR_LAB-Beyond_the_Squares-00bcd4?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square)
 ![Three.js](https://img.shields.io/badge/Three.js-R3F-black?style=flat-square)
@@ -11,10 +13,10 @@
 
 QR LAB is an interactive educational web application that lets visitors explore how QR codes actually work. Instead of just generating QR codes, visitors can:
 
-- **Generate** real, scannable QR codes from any text or URL
+- **Generate** real, scannable QR codes from any text or URL, with custom styles, colors, frames, and a center logo
 - **Explore** the internal anatomy of a QR code with interactive module classification
-- **Visualize** QR codes as 3D objects with React Three Fiber
-- **Learn** the step-by-step encoding pipeline (data → bits → error correction → masking → final code)
+- **Visualize** QR codes as 3D objects with React Three Fiber (Skyline, Blocks, and Flat views)
+- **Learn** the step-by-step encoding pipeline (input → data encoding → error correction → structure placement → masking → final code)
 - **Experiment** with error correction by simulating damage
 - **Scan** generated QR codes with a real smartphone
 
@@ -42,8 +44,9 @@ QR LAB is an interactive educational web application that lets visitors explore 
 ### Installation
 
 ```bash
-# Clone or navigate to the project
-cd qr-lab
+# Clone the repository
+git clone https://github.com/hackathon449-hue/QR-LUMEN-.git
+cd QR-LUMEN-
 
 # Install dependencies
 npm install
@@ -71,11 +74,8 @@ npm install -g firebase-tools
 # Login to Firebase
 firebase login
 
-# Create a new Firebase project (or use an existing one)
-firebase projects:create qr-lab-hackathon
-
-# Associate this directory with the Firebase project
-firebase use qr-lab-hackathon
+# Associate this directory with your Firebase project
+firebase use <your-project-id>
 ```
 
 ### Deploy
@@ -100,18 +100,14 @@ After deployment, you can connect a custom domain:
 ## 📁 Project Structure
 
 ```
-qr-lab/
+QR-LUMEN-/
 ├── public/                   # Static assets
 ├── src/
 │   ├── components/
-│   │   ├── layout/           # Navbar, layout components
-│   │   ├── ui/               # Reusable UI components
-│   │   ├── qr/               # QR-specific components
-│   │   ├── three/            # Three.js components
-│   │   └── educational/      # Educational content components
+│   │   └── layout/           # Navbar
 │   ├── sections/
 │   │   ├── Hero/             # Landing hero section
-│   │   ├── QRGenerator/      # QR code generator
+│   │   ├── QRGenerator/      # QR code generator and styling
 │   │   ├── QRAnatomy/        # Interactive QR anatomy explorer
 │   │   ├── ThreeDExplorer/   # 3D QR visualization
 │   │   ├── HowItWorks/       # Encoding pipeline education
@@ -123,7 +119,8 @@ qr-lab/
 │   ├── services/
 │   │   └── qr/
 │   │       ├── qrGenerator.js      # QR code generation service
-│   │       └── moduleClassifier.js # Module classification engine
+│   │       ├── moduleClassifier.js # Module classification engine
+│   │       └── styledQR.js         # Styled SVG/PNG renderer
 │   ├── data/
 │   │   └── encodingStages.js # Educational content data
 │   ├── App.jsx               # Main application
@@ -156,10 +153,10 @@ The application follows QR Code Model 2 (ISO/IEC 18004) principles:
 - [x] Interactive anatomy explorer with region highlighting
 - [x] Encoding pipeline stepper with 6 stages
 - [x] Error correction damage simulator
-- [x] QR code download as PNG
+- [x] QR code download as PNG and SVG
 - [x] Production build (clean, no errors)
 - [x] Responsive layout (desktop, tablet, mobile)
-- [ ] Smartphone scanning (awaiting physical device testing — QR codes are generated using standards-compliant library)
+- [ ] Smartphone scanning (awaiting physical device testing — QR codes are generated using a standards-compliant library)
 
 ## ⚠️ Known Limitations
 
@@ -168,33 +165,24 @@ The application follows QR Code Model 2 (ISO/IEC 18004) principles:
 3. **Error correction experiment**: The damage simulator is a visual simulation; it does not perform real-time Reed-Solomon decoding in the browser
 4. **Module-level classification**: Individual data vs error-correction codeword distinction is not shown (they are grouped as "Data & Error Correction" per the QR specification's interleaved placement)
 
-## 🎤 Demo Script (2–3 Minutes)
+## 🎤 Demo Script (≈ 2:30 minutes)
 
-### Opening (20s)
-"QR codes are everywhere — payments, menus, tickets. But what's actually happening inside those black and white squares? QR LAB lets you find out."
-
-### Generator Demo (30s)
-Type a URL → show the QR code generating in real time → switch between error correction levels → show how the QR version changes with more data → download the QR code
-
-### Anatomy Explorer (40s)
-"Every module has a purpose." → hover over finder patterns → explain their role → click timing patterns → show alignment patterns → highlight data regions → toggle quiet zone → "No square is random."
-
-### 3D Explorer (30s)
-Rotate the 3D QR code → zoom in → filter by region → switch between 3D and flat views → "This is what a QR code looks like when you can see every layer."
-
-### How It Works (20s)
-Step through the 6 encoding stages → "From your text to a scannable pattern in 6 steps."
-
-### Error Correction (20s)
-Draw damage on the QR code → "Even with 30% damage, the code can still be read because of Reed-Solomon error correction."
-
-### Closing (10s)
-"The next time you scan a QR code, you'll know: those aren't random squares. They're a carefully engineered system of patterns, data, and error correction."
+| Time | Section | What to show |
+|------|---------|--------------|
+| 0:00 | Hero | "A QR code isn't a random picture. It's an engineered data format." |
+| 0:10 | Generator | Type a link, switch error correction from L to H, and watch the code get denser |
+| 0:35 | Anatomy | Finder patterns (1:1:3:1:1 ratio), timing pattern, alignment patterns, format information |
+| 1:15 | 3D Explorer | Rotate in Skyline mode, then filter to finder patterns only |
+| 1:30 | How It Works | Step through the 6 stages: Input → Data Encoding → Error Correction → Structure Placement → Masking → Final Code |
+| 2:00 | Error Correction Lab | Draw damage, and explain that it is a visual simulation and that real recovery works on codewords |
+| 2:20 | Closing | "Now you see more than squares." |
 
 ## 📄 License
 
-Built for the International Student Hackathon.
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
 
 ---
+
+Built for the International Student Hackathon.
 
 **QR LAB** — *Now you see more than squares.*
