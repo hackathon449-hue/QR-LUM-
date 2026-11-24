@@ -1,0 +1,274 @@
+/* ============================================
+   QR Generator Section
+   ============================================ */
+
+/* ── Layout ── */
+.qrgen {
+  position: relative;
+  overflow: hidden;
+}
+
+.qrgen__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.qrgen__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.qrgen__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .qrgen__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Controls panel ── */
+.qrgen__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.qrgen__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qrgen__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(0, 255, 255, 0.7);
+}
+
+/* ── Textarea ── */
+.qrgen__textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  color: #e0e0e0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.qrgen__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.qrgen__textarea:focus {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.12), inset 0 0 8px rgba(0, 255, 255, 0.04);
+}
+
+/* ── ECL Buttons ── */
+.qrgen__ecl-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.qrgen__ecl-btn {
+  flex: 1;
+  padding: 0.6rem 0;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.qrgen__ecl-btn:hover {
+  border-color: rgba(0, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 255, 255, 0.06);
+}
+
+.qrgen__ecl-btn--active {
+  border-color: rgba(0, 255, 255, 0.7);
+  background: rgba(0, 255, 255, 0.12);
+  color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+}
+
+.qrgen__ecl-desc {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  background: rgba(0, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.06);
+}
+
+.qrgen__ecl-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: rgba(0, 255, 255, 0.5);
+}
+
+/* ── Stats Grid ── */
+.qrgen__stats {
+  overflow: hidden;
+}
+
+.qrgen__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.qrgen__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.08);
+}
+
+.qrgen__stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.qrgen__stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #00ffff;
+}
+
+/* ── Action Buttons ── */
+.qrgen__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.qrgen__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.qrgen__action-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qrgen__action-btn--primary {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.4);
+  color: #00ffff;
+}
+
+.qrgen__action-btn--primary:hover:not(:disabled) {
+  background: rgba(0, 255, 255, 0.25);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.2);
+}
+
+.qrgen__action-btn--secondary {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.35);
+  color: rgb(167, 139, 250);
+}
+
+.qrgen__action-btn--secondary:hover:not(:disabled) {
+  background: rgba(139, 92, 246, 0.22);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.18);
+}
+
+.qrgen__action-btn--ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.qrgen__action-btn--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── QR Display panel ── */
+.qrgen__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+}
+
+.qrgen__qr-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.qrgen__qr-image {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 24px rgba(0, 255, 255, 0.15));
+}
+
+/* ── Empty state ── */
+.qrgen__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.qrgen__empty-icon {
+  color: rgba(0, 255, 255, 0.15);
+  stroke-width: 1;
+}
+
+.qrgen__empty-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.35);
+  max-width: 220px;
+  line-height: 1.5;
+}
