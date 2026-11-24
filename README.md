@@ -156,8 +156,8 @@ The application follows QR Code Model 2 (ISO/IEC 18004) principles:
 - [x] QR code download as PNG and SVG
 - [x] Production build (clean, no errors)
 - [x] Responsive layout (desktop, tablet, mobile)
-- [ ] Smartphone scanning (awaiting physical device testing — QR codes are generated using a standards-compliant library)
-
+- [x] Smartphone scanning (tested successfully on a physical device — QR codes are generated using a standards-compliant library)
+      
 ## ⚠️ Known Limitations
 
 1. **Large QR versions (20+)**: The 3D explorer may show reduced performance with very large QR codes due to the number of instanced meshes
