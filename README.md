@@ -168,29 +168,6 @@ The application follows QR Code Model 2 (ISO/IEC 18004) principles:
 3. **Error correction experiment**: The damage simulator is a visual simulation; it does not perform real-time Reed-Solomon decoding in the browser
 4. **Module-level classification**: Individual data vs error-correction codeword distinction is not shown (they are grouped as "Data & Error Correction" per the QR specification's interleaved placement)
 
-## 🎤 Demo Script (2–3 Minutes)
-
-### Opening (20s)
-"QR codes are everywhere — payments, menus, tickets. But what's actually happening inside those black and white squares? QR LAB lets you find out."
-
-### Generator Demo (30s)
-Type a URL → show the QR code generating in real time → switch between error correction levels → show how the QR version changes with more data → download the QR code
-
-### Anatomy Explorer (40s)
-"Every module has a purpose." → hover over finder patterns → explain their role → click timing patterns → show alignment patterns → highlight data regions → toggle quiet zone → "No square is random."
-
-### 3D Explorer (30s)
-Rotate the 3D QR code → zoom in → filter by region → switch between 3D and flat views → "This is what a QR code looks like when you can see every layer."
-
-### How It Works (20s)
-Step through the 6 encoding stages → "From your text to a scannable pattern in 6 steps."
-
-### Error Correction (20s)
-Draw damage on the QR code → "Even with 30% damage, the code can still be read because of Reed-Solomon error correction."
-
-### Closing (10s)
-"The next time you scan a QR code, you'll know: those aren't random squares. They're a carefully engineered system of patterns, data, and error correction."
-
 ## 📄 License
 
 Built for the International Student Hackathon.
