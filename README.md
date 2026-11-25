@@ -164,17 +164,17 @@ The application follows QR Code Model 2 (ISO/IEC 18004) principles:
 - **Error correction experiment:** The damage simulator is a visual simulation; it does not perform real-time Reed-Solomon decoding in the browser
 - **Module-level classification:** Individual data vs error-correction codeword distinction is not shown (they are grouped as "Data & Error Correction" per the QR specification's interleaved placement)
 
-## 🎤 Demo Script (≈ 2:30 minutes)
+## 🎤 Demo Script (≈ 2:00 minutes)
 
 | Time | Section | What to show |
 |---|---|---|
 | 0:00 | Hero | "A QR code isn't a random picture. It's an engineered data format." |
 | 0:10 | Generator | Type a link, switch error correction from L to H, and watch the code get denser |
-| 0:35 | Anatomy | Finder patterns (1:1:3:1:1 ratio), timing pattern, alignment patterns, format information |
-| 1:15 | 3D Explorer | Rotate in Skyline mode, then filter to finder patterns only |
-| 1:30 | How It Works | Step through the 6 stages: Input → Data Encoding → Error Correction → Structure Placement → Masking → Final Code |
-| 2:00 | Error Correction Lab | Draw damage, and explain that it is a visual simulation and that real recovery works on codewords |
-| 2:20 | Closing | "Now you see more than squares." |
+| 0:25 | Anatomy | Finder patterns (1:1:3:1:1 ratio), timing pattern, alignment patterns, format information |
+| 00:50 | 3D Explorer | Rotate in Skyline mode, then filter to finder patterns only |
+| 1:00 | How It Works | Step through the 6 stages: Input → Data Encoding → Error Correction → Structure Placement → Masking → Final Code |
+| 1:20 | Error Correction Lab | Draw damage, and explain that it is a visual simulation and that real recovery works on codewords |
+| 1:40 | Closing | "Now you see more than squares." |
 
 ## 📚 References & Further Reading
 
